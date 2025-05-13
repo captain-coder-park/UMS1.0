@@ -1,0 +1,24 @@
+# Symfony
+/app/bootstrap.php.cache
+/app/cache/*
+/app/logs/*
+/app/config/parameters.yml
+/var/*
+/vendor/
+/web/bundles/
+/node_modules/
+
+# JetBrains / VSCode
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Composer
+composer.lock
+
+# JWT keys (IMPORTANT!)
+/var/jwt/private.pem
+/var/jwt/public.pem

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+    <h4 class="common_head4">Referred by you.</h4>
+    <div class="container">
+        <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Full Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ref in references %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ ref.fullName }}</td>
+                    <td>{{ ref.phone }}</td>
+                    <td>{{ ref.email }}</td>
+                    <td>{{ ref.city }}</td>
+                    <td>
+                        <a href="{{ path('reference_edit', {'id': ref.id}) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                        <a href="{{ path('reference_delete', {'id': ref.id}) }}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No references found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

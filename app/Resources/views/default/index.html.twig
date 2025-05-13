@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+    <h4 class="common_head4">Dashboard</h4>
+    <div class="container">
+        <div class="row">
+            <p>Welcome, <b>{{ user_name }}!</b></p>
+            <p>This is the dashboard of UMS (User Management System) you can refer your friends/colleagues/relatives here using <a href="{{path('reference_new')}}">Refer Someone</a>.</p>
+        </div>
+    </div>
+{% endblock %}

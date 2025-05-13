@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome{% endblock %}</title>
+     <!-- Add Font Awesome CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        .footer{
+            background-color: #f5f5f5;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 60px; /* Footer height */
+            line-height: 60px; /* Vertically center the text */
+        }
+
+        .container{
+            padding-bottom: 80px; /* Avoid content being hidden behind footer */
+        }
+
+        .common_head4{
+            background:lavender;
+            padding:1%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    </header>
+
+    <main>
+        <div id="flash-messages">
+            {% for label, messages in app.session.flashbag.all %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+
+        {% block body %}
+        <!-- Page-specific content will appear here -->
+        {% endblock %}
+
+        <!-- jQuery and Bootstrap JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        {% block javascripts %}
+            <script>
+                setTimeout(function() {
+                    var flashMessages = document.getElementById('flash-messages');
+                    if (flashMessages) {
+                        flashMessages.style.transition = 'opacity 0.5s ease';
+                        flashMessages.style.opacity = '0';
+                        setTimeout(function() {
+                            flashMessages.style.display = 'none';
+                        }, 500); // Wait for fade animation to complete
+                    }
+                }, 5000);
+            </script>
+        {% endblock %}
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted text-center">© {{ "now"|date("Y") }} All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

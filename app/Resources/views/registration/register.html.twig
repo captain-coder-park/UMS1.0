@@ -1,0 +1,28 @@
+{% extends 'outbase.html.twig' %}
+
+{% block body %}
+    <h4 class="common_head4">Register Yourself</h4>
+    <div class="container">
+        <div class="row">
+            <div style="padding:5% 15% 5% 15%">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+                {{ form_start(form) }}
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.password) }}
+                    {{ form_row(form.fullName) }}
+                    {{ form_row(form.phone) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.city) }}
+                    <br>
+                    <button type="submit" class="btn btn-primary pull-right">Register</button>
+                {{ form_end(form) }}
+                <div>OR<br> <a href="{{ path('register')}}">New User?</a></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+# api:
+#     resource: "@AppBundle/Controller/"
+#     type:     annotation
+#     prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+lexik_jwt_login:
+    path: /api/login_check
